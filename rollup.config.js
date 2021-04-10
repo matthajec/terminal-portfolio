@@ -1,6 +1,7 @@
 import svelte from 'rollup-plugin-svelte';
 import resolve from '@rollup/plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
+import css from 'rollup-plugin-css-only';
 
 function serve() {
   // Keep a reference to a spawned server process
@@ -39,6 +40,7 @@ export default {
     name: 'app',
   },
   plugins: [
+    css({ output: 'vendor.css' }),
     svelte({
       include: 'src/**/*.svelte',
     }),

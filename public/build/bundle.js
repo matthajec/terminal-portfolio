@@ -44,6 +44,12 @@ var app = (function () {
         node.addEventListener(event, handler, options);
         return () => node.removeEventListener(event, handler, options);
     }
+    function attr(node, attribute, value) {
+        if (value == null)
+            node.removeAttribute(attribute);
+        else if (node.getAttribute(attribute) !== value)
+            node.setAttribute(attribute, value);
+    }
     function children(element) {
         return Array.from(element.childNodes);
     }
@@ -258,6 +264,7 @@ var app = (function () {
     		c() {
     			button = element("button");
     			button.textContent = "Log out";
+    			attr(button, "class", "svelte-slp6cy");
     		},
     		m(target, anchor) {
     			insert(target, button, anchor);
@@ -286,6 +293,7 @@ var app = (function () {
     		c() {
     			button = element("button");
     			button.textContent = "Log in";
+    			attr(button, "class", "svelte-slp6cy");
     		},
     		m(target, anchor) {
     			insert(target, button, anchor);

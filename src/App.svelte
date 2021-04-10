@@ -13,3 +13,12 @@
 {#if !user.loggedIn}
   <button on:click={toggle}> Log in </button>
 {/if}
+
+<style>
+  button {
+    background-color: black;
+    color: white;
+    border: 0;
+    padding: 1em 2em;
+  }
+</style>
