@@ -1,24 +1,27 @@
 <script>
-  let user = { loggedIn: false };
-
-  function toggle() {
-    user.loggedIn = !user.loggedIn;
-  }
+  import logo from "./logo.png";
 </script>
 
-{#if user.loggedIn}
-  <button on:click={toggle}> Log out </button>
-{/if}
-
-{#if !user.loggedIn}
-  <button on:click={toggle}> Log in </button>
-{/if}
+<div class="container">
+  <h1 class="title">Svelte Template</h1>
+  <img class="logo" src={logo} alt="svelte logo" />
+</div>
 
 <style>
-  button {
-    background-color: black;
-    color: white;
-    border: 0;
-    padding: 1em 2em;
+  .container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .title {
+    font-family: "Courier New", Courier, monospace;
+    margin-bottom: 3rem;
+  }
+
+  .logo {
+    height: 300px;
   }
 </style>

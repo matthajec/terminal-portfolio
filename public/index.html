@@ -4,9 +4,22 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Svelte App</title>
+    <title>Svelte Template</title>
     <script defer src="build/bundle.js"></script>
     <link href="build/vendor.css" rel="stylesheet">
+    <link href="logo192.png" rel="icon">
+    <link href="manifest.json" rel="manifest">
   </head>
-  <body></body>
+  <body>
+
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        // Use the window load event to keep the page load performant
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("build/service-worker.js");
+        });
+      }
+    </script>
+  </body>
 </html>
