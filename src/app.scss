@@ -1,0 +1,17 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .title {
+    font-family: "Courier New", Courier, monospace;
+    margin-bottom: 3rem;
+  }
+  
+  .logo {
+    height: 300px;
+  }
+}
+

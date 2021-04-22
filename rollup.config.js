@@ -1,7 +1,7 @@
 import svelte from 'rollup-plugin-svelte';
 import resolve from '@rollup/plugin-node-resolve';
-import css from 'rollup-plugin-css-only';
 import image from '@rollup/plugin-image';
+import scss from 'rollup-plugin-scss';
 
 export default {
   input: 'src/main.js',
@@ -11,11 +11,11 @@ export default {
     name: 'app',
   },
   plugins: [
-    css({ output: 'vendor.css' }),
     image(),
     svelte({
       include: 'src/**/*.svelte',
     }),
-    resolve({ browser: true })
+    resolve({ browser: true }),
+    scss({ output: 'public/build/vendor.css' }),
   ],
 };
