@@ -2,19 +2,13 @@
   export let text;
 </script>
 
-<div>
-  <span class="location">user@portfolio:~$</span>
-  <span class="text">{text}</span>
+<div class="line">
+  <span>{text}</span>
 </div>
 
 <style>
-  .text {
-    margin: 0;
-    padding: 0;
+  .line {
     height: 20px;
-  }
-
-  .location {
-    color: green;
+    font-size: 1rem;
   }
 </style>
