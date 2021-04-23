@@ -3,10 +3,14 @@
   import InactiveLine from "./components/InactiveLine.svelte";
   import ActiveLine from "./components/ActiveLine.svelte";
   import run from "./run";
-  import { text } from "svelte/internal";
 
   let inputRef;
-  let textLines = [];
+  let terminalRef;
+  let textLines = [
+    "welcome to terminal - version 1.0.0",
+    'use "help" for a list of commands',
+    "",
+  ];
 
   onMount(() => {
     inputRef.focus();
@@ -20,10 +24,11 @@
       textLines = [...textLines, ...run(detail.inputText)];
       textLines = [...textLines, ""];
     }
+    inputRef.focus();
   }
 </script>
 
-<div class="terminal" on:click={() => inputRef.focus()}>
+<div class="terminal" on:click={() => inputRef.focus()} bind:this={terminalRef}>
   {#each textLines as line}
     <InactiveLine text={line} />
   {/each}
@@ -33,8 +38,10 @@
 
 <style>
   .terminal {
+    overflow-y: scroll;
     cursor: text;
-    height: 100%;
+    height: 90%;
+    width: 90%;
     background-color: #230063;
     color: #fff;
   }

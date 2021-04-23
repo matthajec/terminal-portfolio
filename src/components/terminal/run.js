@@ -1,52 +1,46 @@
 import { _dir } from './store';
+import findChildren from './util/fsFindChildren';
+import {
+  ls,
+  cd,
+  view,
+  runFile
+} from './util/fsCommands';
+import {
+  help
+} from './util/infoCommands';
 
+// directories are stored as an array of indexes, with an empty array being the root node in the file tree, and the indexes representing subsequent children
+// for example, [0, 5] would be the child at index 5 of the first node in the root directory
 let dir;
+_dir.subscribe(v => dir = v);
 
-_dir.subscribe(value => dir = value);
 
-
+// the clear command is handled in Terminal.svelte and this is not run if it's called
 export default function run(command) {
-  function handleHelp() {
-    return [
-      'portfolio terminal, version 1.0.0',
-      'available commands:',
-      '',
-      'help: see this list',
-      'ls: see the files in the current directory'
-    ];
-  }
-
-  function handleLs() {
-    switch (dir) {
-      case '/':
-        return [
-          'about',
-          'projects',
-          'resume'
-        ];
-    }
-  }
-
-  function handleCd() {
-    _dir.update(() => command.split(' ')[1]);
-    return [];
-  }
-
-  console.log(command.substring(0, 2));
-
   const base = command.split(' ')[0];
+  const params = command.split(' ').slice(1);
+  const children = findChildren(dir);
 
   switch (base) {
-    case 'help':
-      return handleHelp();
-
     case 'ls':
-      return handleLs();
+      return ls(children);
 
     case 'cd':
-      return handleCd();
+      return cd(children, params[0]);
+
+    case 'view':
+      return view(children, params[0]);
+
+    case 'run':
+      return runFile(children, params[0]);
+
+
+    case 'help':
+      return help(params[0]);
+
 
     default:
-      return [`Command '${command}' not found. To see a list of commands, run 'help'`];
+      return [`${base}: command not found`];
   }
 }
