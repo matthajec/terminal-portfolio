@@ -1,5 +1,6 @@
 import { _dir } from './store';
 import findChildren from './util/fsFindChildren';
+import TextLine from './util/TextLine';
 import {
   ls,
   cd,
@@ -18,6 +19,10 @@ _dir.subscribe(v => dir = v);
 
 // the clear command is handled in Terminal.svelte and this is not run if it's called
 export default function run(command) {
+  if (!command) {
+    return new TextLine('standard', []);
+  }
+
   const base = command.split(' ')[0];
   const params = command.split(' ').slice(1);
   const children = findChildren(dir);
@@ -41,6 +46,6 @@ export default function run(command) {
 
 
     default:
-      return [`${base}: command not found`];
+      return new TextLine('error', [`${base}: command not found`]);
   }
 }

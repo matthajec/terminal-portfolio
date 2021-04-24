@@ -1,16 +1,17 @@
 import { _dir, strPath } from '../store';
+import TextLine from './TextLine';
 
 let dir;
 _dir.set([]);
 _dir.subscribe(v => dir = v);
 
 export function ls(children) {
-  return children.map(child => child.name);
+  return new TextLine('standard', children.map(child => child.name));
 }
 
 export function cd(children, to) {
   if (!to) {
-    return ['command must be provided with a second argument'];
+    return new TextLine('error', ['command expects second argument, try "help command-name" for more info']);
   }
 
   if (to === '.') {
@@ -18,9 +19,9 @@ export function cd(children, to) {
       // remove the last item in the directory array
       _dir.update(d => d.slice(0, d.length - 1));
       strPath.update(d => d.slice(0, d.length - 1));
-      return ['changed directory'];
+      return new TextLine('standard', ['changed directory']);
     } else {
-      return ['cannot move up past the root directory'];
+      return new TextLine('error', ['cannot move up past the root directory']);
     }
 
   }
@@ -28,47 +29,55 @@ export function cd(children, to) {
   const index = children.findIndex(c => c.name === to);
 
   if (index === -1) {
-    return ['no directory found with that name'];
+    return new TextLine('error', ['no directory found with that name']);
   }
 
   const type = children[index].type;
 
   if (type !== 'dir') {
-    return ['no directory found with that name'];
+    return new TextLine('error', ['no directory found with that name']);
   }
 
   _dir.update(d => [...d, index]);
   strPath.update(d => [...d, children[index].name]);
-  return ['changed directory'];
+  return new TextLine('standard', ['changed directory']);
 }
 
 export function view(children, filename) {
+  if (!filename) {
+    return new TextLine('error', ['command expects second argument, try "help command-name" for more info']);
+  }
+
   const index = children.findIndex(c => c.name === filename);
 
   if (index === -1) {
-    return ['no text file found with that name'];
+    return new TextLine('error', ['no text file found with that name']);
   }
 
   const type = children[index].type;
 
   if (type !== 'text') {
-    return ['no text file found with that name'];
+    return new TextLine('error', ['no text file found with that name']);
   }
 
   return children[index].getContents();
 }
 
 export function runFile(children, filename) {
+  if (!filename) {
+    return new TextLine('error', ['command expects second argument, try "help command-name" for more info']);
+  }
+
   const index = children.findIndex(c => c.name === filename);
 
   if (index === -1) {
-    return ['no executable file found with that name'];
+    return new TextLine('error', ['no executable file found with that name']);
   }
 
   const type = children[index].type;
 
   if (type !== 'executable') {
-    return ['no executable file found with that name'];
+    return new TextLine('error', ['no executable file found with that name']);
   }
 
   return children[index].runFunc();
