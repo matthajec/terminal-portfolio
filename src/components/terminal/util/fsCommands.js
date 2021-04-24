@@ -1,4 +1,4 @@
-import { _dir } from '../store';
+import { _dir, strPath } from '../store';
 
 let dir;
 _dir.set([]);
@@ -17,6 +17,7 @@ export function cd(children, to) {
     if (dir.length !== 0) {
       // remove the last item in the directory array
       _dir.update(d => d.slice(0, d.length - 1));
+      strPath.update(d => d.slice(0, d.length - 1));
       return ['changed directory'];
     } else {
       return ['cannot move up past the root directory'];
@@ -37,6 +38,7 @@ export function cd(children, to) {
   }
 
   _dir.update(d => [...d, index]);
+  strPath.update(d => [...d, children[index].name]);
   return ['changed directory'];
 }
 

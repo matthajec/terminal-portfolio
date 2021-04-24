@@ -3,7 +3,9 @@
   import InactiveLine from "./components/InactiveLine.svelte";
   import ActiveLine from "./components/ActiveLine.svelte";
   import run from "./run";
+  import { strPath } from "./store";
 
+  let path;
   let inputRef;
   let terminalRef;
   let textLines = [
@@ -16,11 +18,15 @@
     inputRef.focus();
   });
 
+  strPath.subscribe((v) => {
+    path = v.join("/");
+  });
+
   function handleLineInput({ detail }) {
     if (detail.inputText === "clear") {
       textLines = [];
     } else {
-      textLines = [...textLines, `user@portfolio:~$ ${detail.inputText}`];
+      textLines = [...textLines, `user@portfolio:${path}$ ${detail.inputText}`];
       textLines = [...textLines, ...run(detail.inputText)];
       textLines = [...textLines, ""];
     }
@@ -38,6 +44,8 @@
 
 <style>
   .terminal {
+    font-family: "Courier New", Courier, monospace;
+    padding: 1em;
     overflow-y: scroll;
     cursor: text;
     height: 90%;

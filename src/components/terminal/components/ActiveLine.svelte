@@ -1,11 +1,12 @@
 <script>
   import { createEventDispatcher } from "svelte";
+  import { strPath } from "../store";
+  const dispatch = createEventDispatcher();
 
   export let inputRef;
 
+  let path;
   let inputText;
-
-  const dispatch = createEventDispatcher();
 
   function submitLine() {
     dispatch("submit", {
@@ -13,10 +14,14 @@
     });
     inputText = "";
   }
+
+  strPath.subscribe((v) => {
+    path = v.join("/");
+  });
 </script>
 
 <form class="input-container" on:submit|preventDefault={submitLine}>
-  <span class="prep-input">user@portfolio:~$</span>
+  <span class="prep-input">user@portfolio:{path}$</span>
   <input class="input" bind:this={inputRef} bind:value={inputText} />
 </form>
 
