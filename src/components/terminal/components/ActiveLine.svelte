@@ -4,20 +4,34 @@
   export let inputRef;
 
   let inputText = "";
+  let prevText = "";
 
   const dispatch = createEventDispatcher();
 
   function submitLine() {
+    prevText = inputText;
     dispatch("submit", {
       inputText,
     });
     inputText = "";
   }
+
+  // handle setting the input to the previous command on arrow up
+  function handleKeyDown({ keyCode }) {
+    if (keyCode === 38) {
+      inputText = prevText;
+    }
+  }
 </script>
 
 <form class="input-container" on:submit|preventDefault={submitLine}>
-  <span class="prep-input">user@portfolio:{$strPath}$</span>
-  <input class="input" bind:this={inputRef} bind:value={inputText} />
+  <span class="prep-input">user@portfolio:{$strPath.join("/")}$</span>
+  <input
+    class="input"
+    bind:this={inputRef}
+    bind:value={inputText}
+    on:keydown={handleKeyDown}
+  />
 </form>
 
 <style>

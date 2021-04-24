@@ -7,7 +7,6 @@
 
   let inputRef;
   let terminalRef;
-  $: console.log(terminalRef);
   let textLines = [
     new TextLine("standard", [
       "welcome to terminal - version 1.0.0",
@@ -20,6 +19,7 @@
     inputRef.focus();
   });
 
+  // handle user inputs
   function handleLineInput({ detail }) {
     if (detail.inputText === "clear") {
       textLines = [];
