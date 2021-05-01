@@ -45,7 +45,8 @@ const rootFs = new FSNode(
               'https://movies.matthajec.com',
               'https://github.com/matthajec/movie-search-rebuild',
               '',
-              'This is a "full" stack project built with React and NodeJs. The backend is the just a sort of proxy, it queries the RESTful API and sends back the results so that the API key is not exposed. In the front end, you can see trending movies, search for movies, and see information about movies.'
+              'This is a "full" stack project built with React and NodeJs. The backend is the just a sort of proxy, it queries the RESTful API and sends back the results so that the API key is not exposed. In the front end, you can see trending movies, search for movies, and see information about movies.',
+              'Check out the readme on github for more info'
             ]
           )
         ),
@@ -59,7 +60,8 @@ const rootFs = new FSNode(
               'https://hackernews.matthajec.com',
               'https://github.com/matthajec/hacker-news-clone',
               '',
-              'This is a front end project built with React that shows articles from hackernews. You can sort by best, top, or new articles.']
+              'This is a front end project built with React that shows articles from hackernews. You can sort by best, top, or new articles.',
+              'Check out the readme on github for more info'
             ]
           )
         ),
@@ -73,7 +75,8 @@ const rootFs = new FSNode(
               'https://www.sorting-algorithms.matthajec.com/',
               'https://github.com/matthajec/simple-sorting-algoriths',
               '',
-              'This is a front end project built with Bootstrap and jQuery that shows the user a visualization of the bubble, selection, and insertion sorting algorithms.']
+              'This is a front end project built with Bootstrap and jQuery that shows the user a visualization of the bubble, selection, and insertion sorting algorithms.',
+              'Check out the readme on github for more info'
             ]
           )
         ),
@@ -87,10 +90,11 @@ const rootFs = new FSNode(
               'https://www.whereintheworld.matthajec.com/',
               'https://github.com/matthajec/react-countries-app',
               '',
-              'This is a front end project built with React that arguably shows all of the worlds countries, you can sort by region and/or search by name.']
+              'This is a front end project built with React that arguably shows all of the worlds countries, you can sort by region and/or search by name.',
+              'Check out the readme on github for more info'
             ]
           )
-        ),
+        )
       ]
     )
   ]
