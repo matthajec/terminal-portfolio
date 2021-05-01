@@ -51,6 +51,21 @@ const rootFs = new FSNode(
           )
         ),
         new FSNode(
+          'netflix-clone.txt',
+          null,
+          new TextLine(
+             'standard',
+             [
+               'Netflix Clone',
+               'https://net-clone.matthajec.com',
+               'https://github.com/matthajec/netflix-clone',
+               '',
+               'This is a front end project using React and Firebase. It\'s just a clone of netflix. Authentication and meta data about movies are handled by firebase.',
+               'Check out the readme on github for more info'
+             ]
+          )
+        ),
+        new FSNode(
           'hackernews.txt',
           null,
           new TextLine(
