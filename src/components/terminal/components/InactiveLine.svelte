@@ -26,6 +26,7 @@
 
 <style>
   .line {
+    min-height: 20px;
     line-height: 20px;
     font-size: 1rem;
   }
