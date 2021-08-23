@@ -21,16 +21,16 @@ const rootFs = new FSNode(
       null,
       [
         new FSNode(
-          'imagehost.txt',
+          'netflix-clone.txt',
           null,
           new TextLine(
             'standard',
             [
-              'imagehost',
-              'https://imagehost.matthajec.com',
-              'https://github.com/matthajec/imagehost-client',
+              'Netflix Clone',
+              'https://www.netfx-clone.matthewhajec.dev/',
+              'https://github.com/matthajec/netflix-clone',
               '',
-              'This is a full stack project built with React and NodeJs. You can upload a jpg, jpeg, png, and webp file < 2mb, then you get a URL you can use to share your image',
+              'A Netflix clone using React on the front end and Firebase for the backend',
               'Check out the readme on github for more info'
             ]
           )
@@ -41,41 +41,41 @@ const rootFs = new FSNode(
           new TextLine(
             'standard',
             [
-              'Movie Search App',
-              'https://movies.matthajec.com',
+              'React Movie Search',
+              'https://www.movies.matthewhajec.dev/',
               'https://github.com/matthajec/movie-search-rebuild',
               '',
-              'This is a "full" stack project built with React and NodeJs. The backend is the just a sort of proxy, it queries the RESTful API and sends back the results so that the API key is not exposed. In the front end, you can see trending movies, search for movies, and see information about movies.',
+              'A MaterialUI themed movie search website using the TMDB search API, including a back end server to handle requests without exposing the private TMDB API key',
               'Check out the readme on github for more info'
             ]
           )
         ),
         new FSNode(
-          'netflix-clone.txt',
-          null,
-          new TextLine(
-             'standard',
-             [
-               'Netflix Clone',
-               'https://net-clone.matthajec.com',
-               'https://github.com/matthajec/netflix-clone',
-               '',
-               'This is a front end project using React and Firebase. It\'s just a clone of netflix. Authentication and meta data about movies are handled by firebase.',
-               'Check out the readme on github for more info'
-             ]
-          )
-        ),
-        new FSNode(
-          'hackernews.txt',
+          'hacker-news.txt',
           null,
           new TextLine(
             'standard',
             [
-              'Hacker news app',
-              'https://hackernews.matthajec.com',
+              'Hacker News Client',
+              'https://www.hackernews.matthewhajec.dev/top',
               'https://github.com/matthajec/hacker-news-clone',
               '',
-              'This is a front end project built with React that shows articles from hackernews. You can sort by best, top, or new articles.',
+              'A front end project built with React that shows articles from hacker news, you can sort by best, top, or new articles',
+              'Check out the readme on github for more info'
+            ]
+          )
+        ),
+        new FSNode(
+          'where-in-the-world.txt',
+          null,
+          new TextLine(
+            'standard',
+            [
+              'Where in the world',
+              'https://www.countries.matthewhajec.dev/',
+              'https://github.com/matthajec/react-countries-app',
+              '',
+              'A front end project built in React that uses an API to fetch data about different countries',
               'Check out the readme on github for more info'
             ]
           )
@@ -87,7 +87,7 @@ const rootFs = new FSNode(
             'standard',
             [
               'Simple Sorting Algorithms',
-              'https://www.sorting-algorithms.matthajec.com/',
+              'https://www.sorts.matthewhajec.dev/',
               'https://github.com/matthajec/simple-sorting-algoriths',
               '',
               'This is a front end project built with Bootstrap and jQuery that shows the user a visualization of the bubble, selection, and insertion sorting algorithms.',
